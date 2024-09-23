@@ -53,7 +53,7 @@ exit:
     addi a0, x0, 1 # argument to ecall, 1 = execute print integer
     addi a1, s0, 0 # argument to ecall, the value to be printed
     ecall # print integer ecall
-    # BEGIN EPILOGUE
+    # BEGIN EPILOGUE    
     lw s0, 0(sp)
     lw s1, 4(sp)
     lw s2, 8(sp)

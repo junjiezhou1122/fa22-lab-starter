@@ -26,8 +26,12 @@ main:
 # a0 contains the number which we want to compute the factorial of
 # The return value should be stored in a0
 factorial:
-    # YOUR CODE HERE
-
-    # This is how you return from a function. You'll learn more about this later.
-    # This should be the last line in your program.
-    jr ra
+    addi t0, x0, 1    # Initialize t0 to 1 (for the result)
+    Loop:
+        beq a0, x0, Final  # If a0 is 0, go to Final (factorial(0) = 1)
+        mul t0, t0, a0     # Multiply t0 by a0 (accumulate result)
+        addi a0, a0, -1    # Decrement a0 by 1
+        j Loop             # Repeat the loop
+    Final:
+        mv a0, t0          # Move result from t0 to a0
+        jr ra  
